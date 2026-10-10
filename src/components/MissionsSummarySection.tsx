@@ -17,10 +17,12 @@ import {
 
 interface MissionsSummarySectionProps {
   onStartQuizMissions?: () => void;
+  onNavigateToPdf?: () => void;
 }
 
 export const MissionsSummarySection: React.FC<MissionsSummarySectionProps> = ({
-  onStartQuizMissions
+  onStartQuizMissions,
+  onNavigateToPdf
 }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'notif' | 'exec' | 'debt' | 'special'>('all');
 
@@ -140,15 +142,28 @@ export const MissionsSummarySection: React.FC<MissionsSummarySectionProps> = ({
           </p>
         </div>
 
-        {onStartQuizMissions && (
-          <button
-            onClick={onStartQuizMissions}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 shrink-0 self-start sm:self-center"
-          >
-            <span>اختبر معلوماتك في المهام</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </button>
-        )}
+        <div className="flex items-center gap-2 shrink-0 self-start sm:self-center">
+          {onNavigateToPdf && (
+            <button
+              onClick={onNavigateToPdf}
+              className="px-3.5 py-2 bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5"
+              title="تحميل وطباعة دليل المهام كـ PDF"
+            >
+              <Scale className="w-3.5 h-3.5 text-amber-600" />
+              <span>تحميل كـ PDF</span>
+            </button>
+          )}
+
+          {onStartQuizMissions && (
+            <button
+              onClick={onStartQuizMissions}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs flex items-center gap-1.5"
+            >
+              <span>اختبر معلوماتك في المهام</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Filter Tabs */}

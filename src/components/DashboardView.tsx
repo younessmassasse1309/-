@@ -14,7 +14,8 @@ import {
   BookmarkCheck,
   TrendingUp,
   ShieldCheck,
-  Receipt
+  Receipt,
+  FileDown
 } from 'lucide-react';
 import { ProgressDashboard } from './ProgressDashboard';
 import { MissionsSummarySection } from './MissionsSummarySection';
@@ -98,6 +99,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <Scale className="w-4 h-4 text-emerald-400" />
               <span>الخريطة الذهنية التفاعلية</span>
             </button>
+
+            <button
+              onClick={() => onNavigate('pdf')}
+              className="px-5 py-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 rounded-xl text-xs font-bold backdrop-blur-xs flex items-center gap-2 transition-colors border border-amber-500/40"
+            >
+              <FileDown className="w-4 h-4 text-amber-300" />
+              <span>تحميل الكتيب كـ PDF</span>
+            </button>
           </div>
         </div>
       </div>
@@ -111,6 +120,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* Concise & Comprehensive Judicial Officer Missions Summary (مهام المفوض القضائي استنادا للمصادر) */}
       <MissionsSummarySection 
         onStartQuizMissions={() => onNavigate('quiz')}
+        onNavigateToPdf={() => onNavigate('pdf')}
       />
 
       {/* 4 Feature Pillars Grid */}

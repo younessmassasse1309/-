@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scale, BookOpen, Clock, Hash, GraduationCap, LayoutDashboard, Sparkles, Moon, Sun } from 'lucide-react';
+import { Scale, BookOpen, Clock, Hash, GraduationCap, LayoutDashboard, Sparkles, Moon, Sun, FileDown } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: string;
@@ -29,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'simulator', label: 'محاكي المباراة', icon: Clock },
     { id: 'numbers', label: 'الآجال والأرقام الذهبية', icon: Hash },
     { id: 'previous', label: 'نماذج المباريات', icon: GraduationCap },
+    { id: 'pdf', label: 'كتيب PDF', icon: FileDown },
   ];
 
   return (
@@ -104,6 +105,16 @@ export const Header: React.FC<HeaderProps> = ({
               className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
             >
               {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
+            {/* PDF export button */}
+            <button
+              onClick={() => setActiveTab('pdf')}
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/50 hover:bg-amber-100 dark:hover:bg-amber-900/50 rounded-lg border border-amber-200 dark:border-amber-800 transition-colors"
+              title="تصدير وتحميل الكتيب كـ PDF"
+            >
+              <FileDown className="w-3.5 h-3.5" />
+              <span>كتيب PDF</span>
             </button>
 
             {/* Quick action button */}

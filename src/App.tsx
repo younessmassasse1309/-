@@ -6,6 +6,7 @@ import { MindMapView } from './components/MindMapView';
 import { ExamSimulatorView } from './components/ExamSimulatorView';
 import { GoldenNumbersView } from './components/GoldenNumbersView';
 import { PreviousExamsView } from './components/PreviousExamsView';
+import { PdfExportView } from './components/PdfExportView';
 import { questionsBank } from './data/legalQuestions';
 import { Scale, Heart, Shield, Sparkles } from 'lucide-react';
 
@@ -87,6 +88,10 @@ export default function App() {
 
         {activeTab === 'previous' && (
           <PreviousExamsView onStartPracticeTopic={handleStartCategoryQuiz} />
+        )}
+
+        {activeTab === 'pdf' && (
+          <PdfExportView onBack={() => setActiveTab('dashboard')} />
         )}
       </main>
 
